@@ -4,10 +4,10 @@ class Asiento:
         self.precio = precio
         self.registro = registro
 
-        def cambiarColor(self, nuevoColor: str):
-            colores_permitidos = ["rojo", "verde", "amarillo", "negro", "blanco"]
-            if nuevoColor.lower() in colores_permitidos:
-                self.color = nuevoColor
+    def cambiarColor(self, nuevoColor: str):
+        colores_permitidos = ["rojo", "verde", "amarillo", "negro", "blanco"]
+        if nuevoColor.lower() in colores_permitidos:
+            self.color = nuevoColor
 
 
 
@@ -17,12 +17,11 @@ class Motor:
         self.tipo = tipo
         self.registro = registro
 
-        def cambiarRegistro(self, nuevoRegistro: int):
-            self.registro = nuevoRegistro
-
-        def asignarTipo(self, nuevoTipo: str):
-            if nuevoTipo in ["electrico", "gasolina"]:
-                self.tipo = nuevoTipo
+    def cambiarRegistro(self, nuevoRegistro: int):
+        self.registro = nuevoRegistro
+    def asignarTipo(self, nuevoTipo: str):
+        if nuevoTipo in ["electrico", "gasolina"]:
+            self.tipo = nuevoTipo
 
 class Auto:
     cantidadCreados = 0
@@ -35,17 +34,19 @@ class Auto:
         self.registro = registro
         Auto.cantidadCreados += 1
 
-        def cantidadAsientos(self):
+    def cantidadAsientos(self):
             return sum(isinstance(asiento, Asiento) for asiento in self.asientos)
         
-        def verificarIntegridad(self):
-            registroComparar = self.registro
+    def verificarIntegridad(self):
+        registroComparar = self.registro
 
-            if self.motor.registro != registroComparar:
+        if self.motor.registro != registroComparar:
+            return "Las piezas no son originales"
+        for asiento in self.asientos:
+            if self.asiento.registro != registroComparar:
                 return "Las piezas no son originales"
-            for asiento in self.asientos:
-                if self.asiento.registro != registroComparar:
-                    return "Las piezas no son originales"
                 
-            return "Auto original" 
+        return "Auto original" 
+
+
 
